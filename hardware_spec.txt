@@ -1,0 +1,275 @@
+Title: None
+
+ROC-RK3568-PC
+四 核 64 位 开 源 主 板
+V1.1
+
+天 启 智 能 科 技 有 限 公 司 www.t-firefly.com
+更新记录
+| 版本 | 更新日期 | 更新内容 |
+| --- | --- | --- |
+| V1.0 | 2021-07-08 | 初始版本 |
+| V1.1 | 2021-10-28 | 更新了部分接口定义 |
+| V1.1 | 2022-01-04 | 更新参数､接口描述 |
+Fire
+- 2 -
+录
+产品简介
+规格参数
+5
+主机尺寸
+6
+四 接口描述
+7
+五接口定义 8
+六 公司简介 4
+- 3 -
+ROC-RK3568-PC 四核64位开源主板
+支持8G大内存;支持M.2,SATA3.0接口,可扩展大容量硬盘;拥有双千兆以太网 口,支持WiFi 6无线传输;独特的Control Port接口可连接RS485,RS232设备;支 持多种操作系统,多种启动方式;配套专用应用程序和玩家论坛,极客玩法层出不穷
+RK3568 四核64 位处理器 采用四核64 位Cortex-A55 处理 器22 nm 先进工艺,主频最高 2.0GHz;核心板提供多种存储配 置,客户可快速实现产品的研产
+8GB 大内存,支持全链路ECC 最高可配置8GB 内存容量,可达到 32Bit 位宽,频率高达1600M Hz. 支 持全链路ECC,数据更安全可靠,满 足大内存的产品应用场景的要求
+集成GPU/VPU/NPU 协处理器 GPU 为Mali-G522EE,OpenGL ES3.2/2.0/1.1,Vulkan1.1｡VPU 可实现4K 60 fps H.265 / H.264 /VP9 视频解码和1080P 100fps H.265/H.264 视频编码｡NPU 算 力达到0.8Tops,支持主流架构模 型( Caffe/TensorFlow) 一键切换
+多种显示接口,支持双摄像头 拥有MIPI-CSI x2,MIPI-DSI x 2, HDMI2.0,EDP 接口,可支持三屏异 显;内置8M ISP 图像信号处理器, 支持双摄像头与HDR 功能;可外接 摄像头或用于扩展多路摄像头的输 入｡适用于NVR 监控录像机､信息 发布终端､多媒体广告机等应用场景
+网 太 以 兆 千 双 配置双千兆(1000M bps)自适应 RJ45 以太网口,可通过双网口访 问和传输内外网数据,提高网络传 输效率,满足NVR､软路由工业网 关､OpenWrt 等多网口产品需求
+强大的无线网络通讯功能 支持WiFi 6(802.11ax),具有高速 传输､降低丢包率和重传率的特点, 更有效地减少数据拥塞,并允许更多 设备连接到网络,使传输更加稳 定安全
+板载M.2 与SATA3.0 接口 板载M.2 PCIe3.0(M.2 NVMe SSD)和SATA3.0(2.5 寸SATA SSD/HDD)接口,同时具有高 速读写与大容量存储的优势
+RJ45 转RS485 与RS232 接口扩展 Control Port 控制接口(RJ45)提供 了1 个RS485 和2 个RS232,可外 接RS485/RS232 串口的设备,灵活 控制更多外置设备,拥有更多的玩法
+统 系 乐 娱 客 极 载 搭 支持Firefly 极客娱乐系统Station OS,可带来强大的客厅体验,接上 电视或者显示屏,搭建成家庭娱乐 中心,畅享高清影片和大屏游戏
+丰 富 的 扩 展 接 口 拥有RS485､RS232 x2､ HDMI2.0､ USB3.0､ USB2.0 x2､Type- C 等 接口,可直接应用于外部设备控制和 扩展
+支持Android 与Ubuntu 系统 支持Android 11.0 ､Ubuntu 18.04 系统,运行稳定可靠,为产 品研产提供安全稳定的系统环境
+开放资料,自主定制 提供完整的软件开发SDK､开发文 档､范例､技术资料､开发教程等配 套资料,用户可自主深度定制
+规格参数
+基本参数
+SOC RK3568
+CPU 四核64 位Cortex-A55 处理器,22nm 先进工艺,主频最高2.0GHz
+GPU ARM G52 2EE 图形处理器,支持OpenGL ES 1.1/2.0/3.2,OpenCL 2.0,Vulkan 1.1, 内嵌高性能2D 加速硬件
+NPU RKNN NPU AI 加速器( SoC 集成) :0.8Tops@INT8 性能, 支持Caffe/TensorFlow/TFLite/ONNX/PyTorch/Keras/Darknet 架构模型一键转换
+编解码 4K@60fps
+1080P 视频解码
+视频编码
+H.265/H.264
+60fps
+内存 2GB / 4GB / 8GB LPDDR4
+存储 32GB/64GB/128GB eMMC 内置存储 SPI Flash 16MB
+支持M.2 PCIe 3.0 NVMe SSD ( 2242 / 2280 ) 支持SATA3.0 SSD / HDD
+支持TF-Card
+存储扩展
+硬件参数
+以太网 2 × RJ45 千兆以太网(1000 M bps)
+无线网 支持2.4G/5GHz 双频WiF , WiFi 6i,802.11 a/b/g/n/ac/ax 支持BT5.0
+1 × HDMI2.0,4K@60Hz 输出 2 × MIPI DSI, 1920*1080@60fps 或双通道1×MIPI DSI 2560*1440@60fps
+显示屏
+(LVDS 与MIPI DSI0 复用)
+1 × eDP1.3,支持2560x1600@60fps 输出
+* 最多可支持三屏异显输出
+摄像头 2 路MIPI-CSI 摄像头接口(MIPI CSI 0 / MIPI CSI 1) 支持HDR 功能
+1 × HDMI 音频输出 1 × Speaker 喇叭输出(1.3W/8Ω, 位于双排母座) 1 × Phone 耳机输出(带MIC 录音)
+1 × SPDIF(位于双排母座)
+音频
+1 × USB3.0 (限流1A)
+1 × USB-C (OTG)
+2 × USB2.0 (限流500mA)
+USB
+扩展接口 1 × RJ45 Control Port(1×RS485 + 2×RS232)
+1 × 排座1:
+POWER KEY×1､SPEAKER×1､RESET KEY×1､SPDIF×1､I2S×1､I2C×1､
+PWM×4､SPI×1､UART×1､CAN×1､USB HOST×3 ､GPIO×9
+1 × 排座2:
+其他接口
+ADC×4､RECOVERY×1､PWM×2､I2C×2､UART×1､CAN×2､GPIO×6
+电源 DC 12V(5.5*2.1mm 接口,电压误差±5%),支持9V~24V 宽电压输入
+系统软件
+系统 支持Android 11.0 ､Ubuntu 18.04､Buildroot +QT､Station OS 系统 支持TF 卡､EMMC､U 盘启动
+其他参数
+尺寸 138.0 mm × 77.5 mm × 19.9 mm
+散热 散热片安装孔距:52mm,推荐配套散热片(点击查看)
+待机功耗:0.3W
+典型功耗:4.2W 最大功耗:7.8W
+功耗
+存储温度:-20℃- 70℃ 工作温度:-20℃- 60℃
+存储湿度:10%~80 %
+环境
+- 5 -
+产品尺寸
+- 6 -
+接口描述
+
+eDP1.3 MIPI_DSI1 30P/35P-0.5mm 30P-0.5mm SPI Flash
+Firerly
+TF Card Slot MIPI_CSI MIPI_DSI0 30P-0.5mm30P-0.5mm
+Control Port
+RS232_TX2
+RS232_RX3
+RS232_TX3
+8
+7
+6
+4
+1
+GND
+5 GND
+RS232_RX2
+RS485_A
+RS485_B
+- 7 -
+接口定义
+| 序号 | 定义 | 电平/V | 序号 | 定义 | 电平/V |
+| --- | --- | --- | --- | --- | --- |
+| 1 | GND |  | 2 | 12V Input/ Output | 12 |
+| 3 | GND |  | 4 | 12V Input/ Output | 12 |
+| 5 | GND |  | 6 | 12V Input/ Output | 12 |
+| 7 | 3.3V Output | 3.3 | 8 | 3.3V Output | 3.3 |
+| 9 | GND |  | 10 | GND |  |
+| 11 | 1.8V Output | 1.8 | 12 | 1.8V Output | 1.8 |
+| 13 | 5V Output | 5.0 | 14 | 5V Output | 5.0 |
+| 15 | GND |  | 16 | GND |  |
+| 17 | ADC4 Input pull up resistance 10K | 1.8 | 18 | ADC0 Input /RECOVERY\_KEY pull up resistance 10K | 1.8 |
+| 19 | ADC5 Input pull up resistance 10K | 1.8 | 20 | ADC6 Input pull up resistance 10K | 1.8 |
+| 21 | I2C3\_SDA\_M0 /UART3\_RX\_M0/CAN1 \_RX\_M0/AUDIOPWM\_LOUT\_P/ACOD EC\_ADC\_DATA/GPIO1\_A0\_u pull up resistance 2.2K | 3.3 | 22 | I2C3\_SCL\_M0 /UART3\_TX\_M0/CA N1\_TX\_M0/AUDIOPWM\_LOUT\_N/ ACODEC\_ADC\_CLK/GPIO1\_A1\_u pull up resistance 2.2K | 3.3 |
+| 23 | GND |  | 24 | GND |  |
+| 25 | PWM1\_M0 /GPUAVS/UART0\_RX/GPIO 0\_C0\_d | 3.3 | 26 | PWM7\_IR/ SPI0\_CS0\_M0/PCIE30X 2\_PERSTn\_M0/GPIO0\_C6\_d | 3.3 |
+| 27 | GND |  | 28 | GND |  |
+| 29 | I2C1\_SDA\_TP / CAN0\_RX\_M0/PCIE20\_BUTTONRSTn /MCU\_JTAG\_TCK/GPIO0\_B4\_u pull up resistance 2.2K | 3.3 | 30 | I2C1\_SCL\_TP /CAN0\_TX\_M0 /PCIE30X1\_BUTTONRSTn/MCU\_J TAG\_TDO/GPIO0\_B3\_u pull up resistance 2.2K | 3.3 |
+2. (J6) 双排(15X2)30 PIN 2.0mm 间距扩展接口(母座)
+30
+29
+| 序号 | 定义 | 电平/V | 序号 | 定义 | 电平/V |
+| --- | --- | --- | --- | --- | --- |
+| 1 | GND |  | 2 | PWRON\_KEY 【 to RK809 】 | 3.3 |
+| 3 | SPKP\_OUT 【 speaker Output + 】 | 5.0 | 4 | RESET\_KEY 【 system reset 】 | 3.3 |
+| 5 | SPKN\_OUT 【 speaker Output - 】 | 5.0 | 6 | PWM14\_M0 /VOP\_PWM\_M1/GMA C1\_MDC\_M0/UART7\_TX\_M1/PD M\_CLK1\_M2/GPIO3\_C4\_d | 3.3 |
+| 7 | GND |  | 8 | SPDIF\_TX\_M1/ PWM15\_IR\_M0/G MAC1\_MDIO\_M0/UART7\_RX\_M1/ I2S1\_LRCK\_RX\_M2/GPIO3\_C5\_d | 3.3 |
+| 9 | GND |  | 10 | 3.3V Output | 3.3 |
+| 11 |  |  | 12 | I2C5\_SDA\_M0 /LCDC\_D19/VOP\_B |  |
+|  | I2S3\_MCLK\_M1 /PWM14\_M1/SPI3\_CL K\_M1/CAN1\_RX\_M1/PCIE30X2\_CLK REQn\_M2/GPIO4\_C2\_d | 3.3 |  | T1120\_D10/GMAC1\_RXER\_M0/P DM\_SDI1\_M2/GPIO3\_B4\_d pull up resistance 电阻 2.2K | 3.3 |
+| 13 | I2S3\_LRCK\_M1/ EDP\_HPDIN\_M0/SP DIF\_TX\_M2/SATA2\_ACT\_LED/PCIE30 X2\_PERSTn\_M2/GPIO4\_C4\_d | 3.3 | 14 | I2C5\_SCL\_M0 /LCDC\_D18/VOP\_B T1120\_D9/GMAC1\_RXDV\_CRS\_M 0/PDM\_SDI0\_M2/GPIO3\_B3\_d pull up resistance 电阻 2.2K | 3.3 |
+| 15 | I2S3\_SDO\_M1 /PWM12\_M1/SPI3\_MIS O\_M1/SATA1\_ACT\_LED/UART9\_TX\_ M1/GPIO4\_C5\_d | 3.3 | 16 | I2S3\_SCLK\_M1 /PWM15\_IR\_M1/S PI3\_MOSI\_M1/CAN1\_TX\_M1/PCI E30X2\_WAKEn\_M2/GPIO4\_C3\_d | 3.3 |
+| 17 | GND |  | 18 | I2S3\_SDI\_M1 /PWM13\_M1/SPI3\_C S0\_M1/SATA0\_ACT\_LED/UART9\_ RX\_M1/GPIO4\_C6\_d | 3.3 |
+| 19 | HUB\_HOST\_DP4 | 3.3 | 20 | GND |  |
+| 21 | HUB\_HOST\_DM4 | 3.3 | 22 | 5V Output | 5.0 |
+| 23 | GND |  | 24 | GND |  |
+| 25 | HUB\_HOST\_DP3 | 3.3 | 26 | HUB\_HOST\_DP2 | 3.3 |
+| 27 | HUB\_HOST\_DM3 | 3.3 | 28 | HUB\_HOST\_DM2 | 3.3 |
+| 29 | 5V Output | 5.0 | 30 | 5V Output | 5.0 |
+接口定义
+3. (J9) M-KEY PCIE 接口
+| 序号 | 定义 | 电平/V | 序号 | 定义 | 电平/V |
+| --- | --- | --- | --- | --- | --- |
+| 1 | GND |  | 2 | 3.3V Output | 3.3 |
+| 3 | GND |  | 4 | 3.3V Output | 3.3 |
+| 11 5 7 9 | NC |  | 6 | NC |  |
+| NC |  | 8 | NC |  |
+| GND |  | 10 | DAS/DSS | 3.3 |
+| NC |  | 12 | 3.3V Output | 3.3 |
+| 13 15 | NC GND |  | 14 16 | 3.3V Output 3.3V Output | 3.3 3.3 |
+| 17 19 | NC NC |  | 18 20 | 3.3V Output NC | 3.3 |
+| 21 23 25 27 29 31 | GND |  | 22 | NC |  |
+| NC |  | 24 | NC |  |
+| NC |  | 26 | NC |  |
+| GND |  | 28 | NC |  |
+| PCIE30\_RX1N | 1.8 | 30 | NC |  |
+| PCIE30\_RX1P | 1.8 | 32 | NC |  |
+| 33 35 37 39 41 43 45 47 49 51 | GND |  | 34 | NC |  |
+| PCIE30\_TX1N 【 series capacitance 0.1uF | 】 1.8 | 36 | NC |  |
+| PCIE30\_TX1P 【 series capacitance 0.1uF | 】 1.8 | 38 | DEVSLP 【 pull up resistance10K 】 | 3.3 |
+| GND |  | 40 | NC |  |
+| PCIE30\_RX0N | 1.8 | 42 | NC |  |
+| PCIE30\_RX0P | 1.8 | 44 | NC |  |
+| GND |  | 46 | NC |  |
+| PCIE30\_TX0N 【 series capacitance 0.1uF | 】 1.8 | 48 | NC |  |
+| PCIE30\_TX0P 【 series capacitance 0.1uF | 】 1.8 | 50 | PCIE30X2\_PERSTn\_M1 /LCDC\_D6/V OP\_BT656\_D6\_M0/SPI2\_MOSI\_M1/ | 3.3 |
+|  |  |  | I2S1\_SDI3\_M2/GPIO2\_D6\_d PCIE30X2\_CLKREQn\_M1 / |  |
+| GND |  | 52 | LCDC\_D4/VOP\_BT656\_D4\_M0/SPI2 \_CS1\_M1/ I 2S1\_SDI1\_M2 | 3.3 |
+|  |  |  |  | /GPIO2\_D4\_d PCIE30X2\_WAKEn\_M1 /LCDC\_D5/V |  |
+| 53 | PCIE30\_REFCLKN\_CON | 1.8 | 54 | OP\_BT656\_D5\_M0/SPI2\_CS0\_M1/ I2S1\_SDI2\_M2/GPIO2\_D5\_d | 3.3 |
+| 55 | PCIE30\_REFCLKP\_CON | 1.8 | 56 | NC |  |
+| 57 59 61 | GND |  | 58 | NC |  |
+| NC |  | 60 | NC |  |
+| NC |  | 62 | 3.3V Output | 3.3 |
+| 63 | GND |  | 64 | 3.3V Output | 3.3 |
+| 65 | GND |  | 66 | 3.3V Output | 3.3 |
+| 67 | GND |  |  |  |  |
+
+4. 接口定义 (J4701) MIPI CAMERA 30 PIN 0.5mm 间距
+
+| 序号 | 定义 | 电平/V | 序号 | 定义 | 电平/V |
+| --- | --- | --- | --- | --- | --- |
+| 1 | I2C4\_SDA\_M0 ( EBC\_VCOM/ GMAC1\_RXER\_M1/ SPI3\_MOSI\_M0/ I2S2\_SDI\_M1/ GPIO4\_B2\_d) 【 pull up resistance2.2K 】 | 1.8 | 16 | GND |  |
+| 2 | I2C4\_SCL\_M0 (EBC\_GDOE/ETH1\_REFCLKO\_25M\_M1/ SPI3\_CLK\_M0/I2S2\_SDO\_M1/GPIO4\_B3\_ d) 【 pull up resistance2.2K 】 | 1.8 | 17 | MIPI\_CSI\_RX\_CLK0P | 1.8 |
+| 3 | CAMERA0\_PDN\_L (I2C2\_SDA\_M1/EBC\_GDSP/CAN2\_RX\_M 0/ISP\_FLASH\_TRIGIN/VOP\_BT656\_CLK\_ M1/GPIO4\_B4\_d) | 1.8 | 18 | MIPI\_CSI\_RX\_CLK0N | 1.8 |
+| 4 | CAM\_RST (GPIO0\_D5\_D) | 1.8 | 19 | GND |  |
+| 5 | GND |  | 20 | MIPI\_CSI\_RX\_D2P | 1.8 |
+| 6 | CIF\_CLKOUT (CIF\_CLKOUT/EBC\_GDCLK/PWM11\_IR\_ M1/GPIO4\_C0\_d) | 1.8 | 21 | MIPI\_CSI\_RX\_D2N | 1.8 |
+| 7 | CAMERA1\_PDN\_L (I2C2\_SCL\_M1/EBC\_SDSHR/CAN2\_TX\_ M0/I2S1\_SDO3\_M1/GPIO4\_B5\_d) | 1.8 | 22 | GND |  |
+| 8 | CAM1\_RST (GPIO0\_D6\_d) | 1.8 | 23 | MIPI\_CSI\_RX\_D3P | 1.8 |
+| 9 | MIPI\_MCLK1 (REFCLK\_OUT/GPIO0\_A0\_d) | 1.8 | 24 | MIPI\_CSI\_RX\_D3N | 1.8 |
+| 10 | GND |  | 25 | GND |  |
+| 11 | MIPI\_CSI\_RX\_D0P | 1.8 | 26 | MIPI\_CSI\_RX\_CLK1P | 1.8 |
+| 12 | MIPI\_CSI\_RX\_D0N | 1.8 | 27 | MIPI\_CSI\_RX\_CLK1N | 1.8 |
+| 13 | GND |  | 28 | GND |  |
+| 14 | MIPI\_CSI\_RX\_D1P | 1.8 | 29 | 5V Output | 5.0 |
+| 15 | MIPI\_CSI\_RX\_D1N | 1.8 | 30 | 5V Output | 5.0 |
+5. (J5600) EDP_Display_Interface 30 PIN 0.5mm 间距
+| 序号 | 定义 | 电平/V | 序号 | 定义 | 电平/V |
+| --- | --- | --- | --- | --- | --- |
+| 1 | NC |  | 19 | GND |  |
+| 2 | GND |  | 20 | GND |  |
+| 3 | EDP\_TX\_D1N | 1.8 | 21 | GND |  |
+| 4 | EDP\_TX\_D1P | 1.8 | 22 | EDP\_BL\_EN (LCDC\_DEN/VOP\_BT1120\_D15/S PI1\_CLK\_M1/UART5\_RX\_M1/I2S1 \_SCLK\_RX\_M2/GPIO3\_C3\_d) | 3.3 |
+| 5 | GND |  | 23 | EDP\_BL\_PWM1\_M0 (PWM1\_M0/GPUAVS/UART0\_RX/ GPIO0\_C0\_d) | 3.3 |
+| 6 | EDP\_TX\_D0N | 1.8 | 24 | NC |  |
+| 7 | EDP\_TX\_D0P | 1.8 | 25 | NC |  |
+| 8 | GND |  | 26 | 12V Output | 12 |
+| 9 | EDP\_AUXP | 1.8 | 27 | 12V Output | 12 |
+接口定义
+| 10 | EDP\_AUXN | 1.8 | 28 | 12V Output | 12 |
+| --- | --- | --- | --- | --- | --- |
+| 11 | GND |  | 29 | 12V Output | 12 |
+| 12 | 3.3V Output | 3.3 | 30 | NC |  |
+| 13 | 3.3V Output | 3.3 |  |  |  |
+| 14 | NC |  |  |  |  |
+| 15 | GND |  |  |  |  |
+| 16 | GND |  |  |  |  |
+| 17 | EDP\_HPD (EDP\_HPDIN\_M1/PWM3\_IR/ PCIE30X1\_WAKEn\_M0/MCU\_JTAG\_T MS/GPIO0\_C2\_d) | 3.3V |  |  |  |
+| 18 | GND |  |  |  |  |
+6.(J5601) EDP_Display_Interface 35 PIN 0.5mm 间距
+| 序号 | 定义 | 电平/V | 序号 | 定义 | 电平/V |
+| --- | --- | --- | --- | --- | --- |
+| 1 | EDP\_TX\_D3N | 1.8 | 19 | NC |  |
+| 2 | EDP\_TX\_D3P | 1.8 | 20 | GND |  |
+| 3 | GND |  | 21 | GND |  |
+| 4 | EDP\_TX\_D2N | 1.8 | 22 | EDP\_HPD (EDP\_HPDIN\_M1/PWM3\_IR/ PCIE30X1\_WAKEn\_M0/MCU\_JTA G\_TMS/GPIO0\_C2\_d) | 3.3V |
+| 5 | EDP\_TX\_D2P | 1.8 | 23 | GND |  |
+| 6 | NC |  | 24 | GND |  |
+| 7 | GND |  | 25 | GND |  |
+| 8 | EDP\_TX\_D1N | 1.8 | 26 | GND |  |
+| 9 | EDP\_TX\_D1P | 1.8 | 27 | EDP\_BL\_EN (LCDC\_DEN/VOP\_BT1120\_D15/S PI1\_CLK\_M1/UART5\_RX\_M1/I2S1 \_SCLK\_RX\_M2/GPIO3\_C3\_d) | 3.3 |
+| 10 | GND |  | 28 | EDP\_BL\_PWM1\_M0 (PWM1\_M0/GPUAVS/UART0\_RX/ GPIO0\_C0\_d) | 3.3 |
+| 11 | EDP\_TX\_D0N | 1.8 | 29 | NC |  |
+| 12 | EDP\_TX\_D0P | 1.8 | 30 | NC |  |
+| 13 | GND |  | 31 | 12V Output | 12 |
+| 14 | EDP\_AUXP | 1.8 | 32 | 12V Output | 12 |
+| 15 | EDP\_AUXN | 1.8 | 33 | 12V Output | 12 |
+| 16 | GND |  | 34 | 12V Output | 12 |
+| 17 | 3.3V Output | 3.3 | 35 | NC |  |
+| 18 | 3.3V Output | 3.3 |  |  |  |
+7.(J5200) MIPI_Display_Interface 30 PIN 0.5mm 间距
+| 序号 | 定义 | 电平/V | 序号 | 定义 | 电平/V |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 5V Output | 5.0 | 16 | MIPI\_DSI\_TX0\_D0P/LVDS\_TX0\_D0P | 1.8 |
+| 2 | 5V Output | 5.0 | 17 | MIPI\_DSI\_TX0\_D0N/LVDS\_TX0\_D0N | 1.8 |
+| 3 | 5V Output | 5.0 | 18 | GND |  |
+| 4 | GND |  | 19 | MIPI\_DSI\_TX0\_D1P/LVDS\_TX0\_D1P | 1.8 |
+| 5 | NC | 3.3 | 20 | MIPI\_DSI\_TX0\_D1N/LVDS\_TX0\_D1N | 1.8 |
+| 6 | 3.3V Output | 3.3 | 21 | GND |  |
+接口定义
+| 7 | I2C1\_SDA\_TP (I2C1\_SDA/CAN0\_RX\_M0/PCIE20\_ BUTTONRSTn/MCU\_JTAG\_TCK/G PIO0\_B4\_u) 【 pull up resistance2.2K 】 | 3.3 | 22 | MIPI\_DSI\_TX0\_CLKP/LVDS\_TX0\_CLKP | 1.8 |
+| --- | --- | --- | --- | --- | --- |
+| 8 | I2C1\_SCL\_TP (I2C1\_SCL/CAN0\_TX\_M0/PCIE30X 1\_BUTTONRSTn/MCU\_JTAG\_TDO / GPIO0\_B3\_u) 【 pull up resistance2.2K 】 | 3.3 | 23 | MIPI\_DSI\_TX0\_CLKN/LVDS\_TX0\_CLKN | 1.8 |
+| 9 | LCD0\_PWREN\_H (HDMITX\_CEC\_M1/PWM0\_M1/UA RT0\_CTSn/GPIO0\_C7 \_d) | 3.3 | 24 | GND |  |
+| 10 | TP\_INT\_L (I2C2\_SCL\_M0/SPI0\_CLK\_M0/PCI E20\_WAKEn\_M0/PWM1\_M1/GPIO 0\_B5\_u) | 3.3 | 25 | MIPI\_DSI\_TX0\_D2P/LVDS\_TX0\_D2P | 1.8 |
+| 11 | BL\_EN0 (LCDC\_D15/VOP\_BT1120\_D6/ETH 1\_REFCLKO\_25M\_M0/SDMMC2\_P WREN\_M1/GPIO3\_B0\_d) | 3.3 | 26 | MIPI\_DSI\_TX0\_D2N/LVDS\_TX0\_D2N | 1.8 |
+| 12 | LCD0\_BL (PWM4/VOP\_PWM\_M0/PCIE30X1\_ PERSTn\_M0/MCU\_JTAG\_TRSTn/G PIO0\_C3\_d) | 3.3 | 27 | GND |  |
+| 13 | LCD0\_RST (LCDC\_D20/VOP\_BT1120\_D11/GM AC1\_TXD0\_M0/I2C3\_SCL\_M1/PW M10\_M0/GPIO3\_B5\_d) | 3.3 | 28 | MIPI\_DSI\_TX0\_D3P/LVDS\_TX0\_D3P | 1.8 |
+| 14 | TP\_RST\_L (I2C2\_SDA\_M0/SPI0\_MOSI\_M0/PC IE20\_PERSTn\_M0/PWM2\_M1/GPI O0\_B6\_u) | 3.3 | 29 | MIPI\_DSI\_TX0\_D3N/LVDS\_TX0\_D3N | 1.8 |
+| 15 | GND |  | 30 | GND |  |
