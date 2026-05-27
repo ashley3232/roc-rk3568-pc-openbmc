@@ -20,14 +20,11 @@ jobs:
       - name: Setup OpenBMC
         run: |
           mkdir -p openbmc_workspace/build/conf
-          
-          cat > openbmc_workspace/build/conf/local.conf << 'CONF'
-MACHINE ??= "roc-rk3568-pc"
-DISTRO ?= "openbmc-rtk-ucmc"
-CONF_VERSION = "2"
-BB_NUMBER_THREADS = "8"
-PARALLEL_MAKE = "-j 8"
-CONF
+          echo 'MACHINE ??= "roc-rk3568-pc"' > openbmc_workspace/build/conf/local.conf
+          echo 'DISTRO ?= "openbmc-rtk-ucmc"' >> openbmc_workspace/build/conf/local.conf
+          echo 'CONF_VERSION = "2"' >> openbmc_workspace/build/conf/local.conf
+          echo 'BB_NUMBER_THREADS = "8"' >> openbmc_workspace/build/conf/local.conf
+          echo 'PARALLEL_MAKE = "-j 8"' >> openbmc_workspace/build/conf/local.conf
       
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
