@@ -18,11 +18,10 @@ jobs:
           echo "Installing build dependencies..."
           sudo apt-get update
           sudo apt-get install -y git build-essential cmake ninja-build g++ flex bison gperf python3 python3-pip python3-venv libffi-dev libssl-dev zlib1g-dev libncurses-dev bc cpio file unzip wget curl zstd xz-utils rsync uuid-dev libgpgme-dev swig
-          echo "Dependencies installed successfully!"
+          echo "Dependencies installed!"
       
       - name: Setup OpenBMC
         run: |
-          echo "Setting up OpenBMC build environment..."
           mkdir -p openbmc_workspace/build/conf
           
           cat > openbmc_workspace/build/conf/local.conf << 'CONF'
@@ -33,21 +32,15 @@ BB_NUMBER_THREADS = "8"
 PARALLEL_MAKE = "-j 8"
 CONF
           
-          echo "OpenBMC build environment configured successfully!"
-          cat openbmc_workspace/build/conf/local.conf
+          echo "OpenBMC configured!"
       
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: openbmc-build-config
+          name: openbmc-config
           path: openbmc_workspace/build/
           retention-days: 30
           
-      - name: Success message
+      - name: Complete
         run: |
-          echo "==================================="
-          echo "Build configuration completed!"
-          echo "==================================="
-          echo "Machine: roc-rk3568-pc"
-          echo "Status: Ready for compilation"
-          echo "==================================="
+          echo "Build config ready!"
