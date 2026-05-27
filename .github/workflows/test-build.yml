@@ -1,0 +1,34 @@
+name: Test Build
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Hello World
+      run: |
+        echo "Hello from GitHub Actions!"
+        echo "Testing OpenBMC build workflow..."
+        uname -a
+        echo "Build configuration prepared"
+        echo "SUCCESS: Workflow is working!"
+
+    - name: List files
+      run: |
+        ls -la
+
+    - name: Show configuration
+      run: |
+        cat << 'CONFIG'
+OpenBMC Build Configuration:
+- Machine: roc-rk3568-pc
+- Distro: openbmc-rtk-ucmc
+- Threads: 8
+CONFIG
+        echo "Test workflow completed successfully!"
