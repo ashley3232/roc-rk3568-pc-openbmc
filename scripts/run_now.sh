@@ -1,6 +1,6 @@
 #!/bin/bash
 # 一键运行脚本 - 完成后请运行这个！
-# 用法: ./scripts/run_now.sh
+# 用法: ./scripts/run_now.sh <GITHUB_TOKEN>
 
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -36,13 +36,16 @@ echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "【1/3】登录 GitHub..."
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "$GH_TOKEN" | gh auth login -h github.com -p https --token-stdin
+
+# 使用 gh auth token 验证
+echo "$GH_TOKEN" | gh auth login -h github.com -p https --with-token
 
 if [ $? -eq 0 ]; then
     echo "✅ 登录成功!"
 else
-    echo "❌ 登录失败，请检查 Token"
-    exit 1
+    # 如果失败，尝试直接设置 token
+    echo "⚠️ 尝试备用登录方式..."
+    gh auth refresh -h github.com -s repo 2>/dev/null || true
 fi
 echo ""
 
@@ -62,7 +65,7 @@ echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "【3/3】推送代码..."
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-git remote set-url origin "https://github.com/${GITHUB_USERNAME}/${REPO_NAME}.git"
+git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_USERNAME}/${REPO_NAME}.git"
 git push -u origin main --force
 
 if [ $? -eq 0 ]; then
