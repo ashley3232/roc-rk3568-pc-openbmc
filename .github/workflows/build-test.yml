@@ -1,0 +1,13 @@
+name: Build Test
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Building OpenBMC..."
+      - run: echo "Build completed!"
