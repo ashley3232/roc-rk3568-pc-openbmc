@@ -1,0 +1,70 @@
+name: OpenBMC Firmware Build
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Install deps
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y git build-essential cmake ninja-build g++ flex bison gperf python3 python3-pip libffi-dev libssl-dev zlib1g-dev libncurses-dev bc cpio file unzip wget curl zstd xz-utils rsync uuid-dev libgpgme-dev swig tar gzip ccache gawk
+        pip3 install pyyaml distro pysp
+
+    - name: Clone OpenBMC
+      run: |
+        cd /tmp
+        rm -rf openbmc
+        git clone --depth 1 https://github.com/openbmc/openbmc.git
+
+    - name: Setup build
+      run: |
+        cd /tmp/openbmc
+        mkdir -p build/conf
+        
+        cat > build/conf/local.conf << 'CONF'
+MACHINE = "qemux86-64"
+DISTRO = "poky"
+BB_NUMBER_THREADS = "4"
+PARALLEL_MAKE = "-j 4"
+CONF
+        
+        echo "Build configured!"
+        
+    - name: Create build script
+      run: |
+        cat > /tmp/openbmc/build.sh << 'SCRIPT'
+#!/bin/bash
+set -e
+cd /tmp/openbmc
+source openbmc-env build
+bitbake obmc-phosphor-image
+SCRIPT
+        chmod +x /tmp/openbmc/build.sh
+        
+    - name: Package
+      run: |
+        cd /tmp/openbmc
+        tar -czf /tmp/openbmc-build.tar.gz build/conf/local.conf build.sh
+        ls -lh /tmp/openbmc-build.tar.gz
+        
+    - name: Upload
+      uses: actions/upload-artifact@v4
+      with:
+        name: openbmc-build
+        path: /tmp/openbmc-build.tar.gz
+        retention-days: 30
+        
+    - name: Done
+      run: |
+        echo "## Done" >> $GITHUB_STEP_SUMMARY
+        echo "Build setup ready" >> $GITHUB_STEP_SUMMARY
