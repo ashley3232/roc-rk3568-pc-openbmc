@@ -22,6 +22,7 @@ jobs:
     - name: Clone OpenBMC
       run: |
         cd /tmp
+        rm -rf openbmc-build
         git clone --depth 1 https://github.com/openbmc/openbmc.git openbmc-build
         cd openbmc-build
         ls -la
@@ -30,25 +31,17 @@ jobs:
       run: |
         cd /tmp/openbmc-build
         mkdir -p build/conf
-        
-        cat > build/conf/local.conf << CONF
-MACHINE = "qemux86-64"
-DISTRO = "poky"
-BB_NUMBER_THREADS = "8"
-PARALLEL_MAKE = "-j 8"
-CONF
-        
-        ls -la build/conf/
-        cat build/conf/local.conf
+        echo 'MACHINE = "qemux86-64"' > build/conf/local.conf
+        echo 'DISTRO = "poky"' >> build/conf/local.conf
+        echo 'BB_NUMBER_THREADS = "8"' >> build/conf/local.conf
+        echo 'PARALLEL_MAKE = "-j 8"' >> build/conf/local.conf
     
     - name: Create firmware script
       run: |
-        cat > /tmp/openbmc-build/build-firmware.sh << SCRIPT
-#!/bin/bash
-cd /tmp/openbmc-build
-source openbmc-env build
-bitbake obmc-phosphor-image
-SCRIPT
+        echo '#!/bin/bash' > /tmp/openbmc-build/build-firmware.sh
+        echo 'cd /tmp/openbmc-build' >> /tmp/openbmc-build/build-firmware.sh
+        echo 'source openbmc-env build' >> /tmp/openbmc-build/build-firmware.sh
+        echo 'bitbake obmc-phosphor-image' >> /tmp/openbmc-build/build-firmware.sh
         chmod +x /tmp/openbmc-build/build-firmware.sh
     
     - name: Package artifacts
@@ -68,14 +61,9 @@ SCRIPT
       run: |
         echo "## OpenBMC Build Environment Ready" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
-        echo "✅ Build environment prepared with:" >> $GITHUB_STEP_SUMMARY
-        echo "- OpenBMC repository cloned" >> $GITHUB_STEP_SUMMARY
-        echo "- Build configuration created" >> $GITHUB_STEP_SUMMARY
-        echo "- Build script included" >> $GITHUB_STEP_SUMMARY
+        echo "### Artifacts" >> $GITHUB_STEP_SUMMARY
+        echo "Download the artifact to get build configuration" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
-        echo "### To build firmware locally:" >> $GITHUB_STEP_SUMMARY
-        echo "1. Download artifacts" >> $GITHUB_STEP_SUMMARY
-        echo "2. Extract: tar -xzvf openbmc-firmware-build.tar.gz" >> $GITHUB_STEP_SUMMARY
-        echo "3. Run: ./build-firmware.sh" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "**Note**: Full build takes 2-4+ hours" >> $GITHUB_STEP_SUMMARY
+        echo "### To Build Firmware" >> $GITHUB_STEP_SUMMARY
+        echo "1. Extract: tar -xzvf openbmc-firmware-build.tar.gz" >> $GITHUB_STEP_SUMMARY
+        echo "2. Run: ./build-firmware.sh" >> $GITHUB_STEP_SUMMARY
