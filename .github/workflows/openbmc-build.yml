@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       
       - name: Install dependencies
         run: |
@@ -27,7 +27,7 @@ jobs:
           echo 'PARALLEL_MAKE = "-j 8"' >> openbmc_workspace/build/conf/local.conf
       
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: openbmc-config
           path: openbmc_workspace/build/
