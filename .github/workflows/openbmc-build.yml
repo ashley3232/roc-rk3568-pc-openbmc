@@ -1,4 +1,4 @@
-name: OpenBMC Build
+name: OpenBMC Build Firmware
 
 on:
   push:
@@ -6,32 +6,78 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-openbmc:
     runs-on: ubuntu-latest
+    timeout-minutes: 300  # 5 hours timeout
     
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Install dependencies
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Install build dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y git build-essential cmake ninja-build g++ flex bison gperf python3 python3-pip python3-venv libffi-dev libssl-dev zlib1g-dev libncurses-dev bc cpio file unzip wget curl zstd xz-utils rsync uuid-dev libgpgme-dev swig
-      
-      - name: Setup OpenBMC
+          sudo apt-get install -y \
+            git build-essential cmake ninja-build g++ \
+            flex bison gperf python3 python3-pip \
+            python3-venv libffi-dev libssl-dev \
+            zlib1g-dev libncurses-dev bc cpio \
+            file unzip wget curl zstd xz-utils \
+            rsync uuid-dev libgpgme-dev swig \
+            python3-git tar gzip ccache
+            
+      - name: Clone OpenBMC repository
         run: |
-          mkdir -p openbmc_workspace/build/conf
-          echo 'MACHINE ??= "roc-rk3568-pc"' > openbmc_workspace/build/conf/local.conf
-          echo 'DISTRO ?= "openbmc-rtk-ucmc"' >> openbmc_workspace/build/conf/local.conf
-          echo 'CONF_VERSION = "2"' >> openbmc_workspace/build/conf/local.conf
-          echo 'BB_NUMBER_THREADS = "8"' >> openbmc_workspace/build/conf/local.conf
-          echo 'PARALLEL_MAKE = "-j 8"' >> openbmc_workspace/build/conf/local.conf
+          cd /tmp
+          if [ ! -d "openbmc" ]; then
+            git clone --depth 1 https://github.com/openbmc/openbmc.git
+          fi
+          cd openbmc
+          git submodule update --init --recursive
       
-      - name: Upload artifacts
+      - name: Setup build environment for ROC-RK3568-PC
+        run: |
+          cd /tmp/openbmc
+          
+          # Source the environment
+          source openbmc-env
+          
+          # Initialize build directory
+          TEMPLATECONF=meta-openbmc-machines/meta-roc-rk3568/conf . ./oe-init-build-env build-roc-rk3568
+          
+          # Configure for RK3568
+          echo 'MACHINE ??= "roc-rk3568-pc"' >> conf/local.conf
+          echo 'DISTRO ?= "openbmc-rtk"' >> conf/local.conf
+          echo 'BB_NUMBER_THREADS = "4"' >> conf/local.conf
+          echo 'PARALLEL_MAKE = "-j 4"' >> conf/local.conf
+          
+      - name: Build OpenBMC firmware
+        run: |
+          cd /tmp/openbmc/build-roc-rk3568
+          source openbmc-env
+          bitbake obmc-phosphor-image
+          
+      - name: Collect firmware artifacts
+        run: |
+          cd /tmp/openbmc/build-roc-rk3568
+          find . -name "*.rom" -o -name "*.wic" -o -name "*.bin" | head -20
+          
+      - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: openbmc-config
-          path: openbmc_workspace/build/
+          name: openbmc-firmware-roc-rk3568
+          path: |
+            /tmp/openbmc/build-roc-rk3568/tmp*/deploy/images/roc-rk3568-pc/**/*.rom
+            /tmp/openbmc/build-roc-rk3568/tmp*/deploy/images/roc-rk3568-pc/**/*.wic
+            /tmp/openbmc/build-roc-rk3568/tmp*/deploy/images/roc-rk3568-pc/**/*.bin
           retention-days: 30
-      
-      - name: Complete
-        run: echo "Build configuration ready!"
+          
+      - name: Build Summary
+        run: |
+          echo "## OpenBMC Firmware Build Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Platform**: ROC-RK3568-PC" >> $GITHUB_STEP_SUMMARY
+          echo "**Status**: Build successful" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Artifacts" >> $GITHUB_STEP_SUMMARY
+          echo "- Firmware files uploaded to artifacts" >> $GITHUB_STEP_SUMMARY
