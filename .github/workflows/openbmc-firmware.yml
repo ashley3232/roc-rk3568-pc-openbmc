@@ -3,68 +3,79 @@ name: OpenBMC Firmware Build
 on:
   push:
     branches: [ main ]
-  workflow_dispatch: {}
+  workflow_dispatch:
 
 jobs:
-  build:
+  prepare-build:
     runs-on: ubuntu-latest
-    timeout-minutes: 300
+    timeout-minutes: 120
     
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      
-    - name: Install deps
+    - uses: actions/checkout@v4
+    
+    - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y git build-essential cmake ninja-build g++ flex bison gperf python3 python3-pip libffi-dev libssl-dev zlib1g-dev libncurses-dev bc cpio file unzip wget curl zstd xz-utils rsync uuid-dev libgpgme-dev swig tar gzip ccache gawk
-        pip3 install pyyaml distro pysp
-
+        sudo apt-get install -y git build-essential g++ python3 python3-pip libffi-dev libssl-dev zlib1g-dev libncurses-dev bc file unzip wget curl tar gzip ccache gawk
+        pip3 install pyyaml distro
+    
     - name: Clone OpenBMC
       run: |
         cd /tmp
-        rm -rf openbmc
-        git clone --depth 1 https://github.com/openbmc/openbmc.git
-
-    - name: Setup build
+        git clone --depth 1 https://github.com/openbmc/openbmc.git openbmc-build
+        cd openbmc-build
+        ls -la
+    
+    - name: Create build config
       run: |
-        cd /tmp/openbmc
+        cd /tmp/openbmc-build
         mkdir -p build/conf
         
-        cat > build/conf/local.conf << 'CONF'
+        cat > build/conf/local.conf << CONF
 MACHINE = "qemux86-64"
 DISTRO = "poky"
-BB_NUMBER_THREADS = "4"
-PARALLEL_MAKE = "-j 4"
+BB_NUMBER_THREADS = "8"
+PARALLEL_MAKE = "-j 8"
 CONF
         
-        echo "Build configured!"
-        
-    - name: Create build script
+        ls -la build/conf/
+        cat build/conf/local.conf
+    
+    - name: Create firmware script
       run: |
-        cat > /tmp/openbmc/build.sh << 'SCRIPT'
+        cat > /tmp/openbmc-build/build-firmware.sh << SCRIPT
 #!/bin/bash
-set -e
-cd /tmp/openbmc
+cd /tmp/openbmc-build
 source openbmc-env build
 bitbake obmc-phosphor-image
 SCRIPT
-        chmod +x /tmp/openbmc/build.sh
-        
-    - name: Package
+        chmod +x /tmp/openbmc-build/build-firmware.sh
+    
+    - name: Package artifacts
       run: |
-        cd /tmp/openbmc
-        tar -czf /tmp/openbmc-build.tar.gz build/conf/local.conf build.sh
-        ls -lh /tmp/openbmc-build.tar.gz
-        
+        cd /tmp/openbmc-build
+        tar -czvf /tmp/openbmc-firmware-build.tar.gz build/conf/local.conf build-firmware.sh
+        ls -lh /tmp/openbmc-firmware-build.tar.gz
+    
     - name: Upload
       uses: actions/upload-artifact@v4
       with:
-        name: openbmc-build
-        path: /tmp/openbmc-build.tar.gz
+        name: openbmc-firmware-build
+        path: /tmp/openbmc-firmware-build.tar.gz
         retention-days: 30
-        
-    - name: Done
+    
+    - name: Summary
       run: |
-        echo "## Done" >> $GITHUB_STEP_SUMMARY
-        echo "Build setup ready" >> $GITHUB_STEP_SUMMARY
+        echo "## OpenBMC Build Environment Ready" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "✅ Build environment prepared with:" >> $GITHUB_STEP_SUMMARY
+        echo "- OpenBMC repository cloned" >> $GITHUB_STEP_SUMMARY
+        echo "- Build configuration created" >> $GITHUB_STEP_SUMMARY
+        echo "- Build script included" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### To build firmware locally:" >> $GITHUB_STEP_SUMMARY
+        echo "1. Download artifacts" >> $GITHUB_STEP_SUMMARY
+        echo "2. Extract: tar -xzvf openbmc-firmware-build.tar.gz" >> $GITHUB_STEP_SUMMARY
+        echo "3. Run: ./build-firmware.sh" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Note**: Full build takes 2-4+ hours" >> $GITHUB_STEP_SUMMARY
